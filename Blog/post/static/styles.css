@@ -1,145 +1,36 @@
-/* Estilos para el fondo oscuro */
+/* Estilos modernos para el fondo oscuro */
 body {
-    background-color: #121212;
-    color: #e0e0e0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    background-color: #121212;  /* Fondo oscuro */
+    color: #e0e0e0;  /* Texto claro */
+    font-family: 'Roboto', sans-serif;  /* Fuente moderna */
+    margin: 0;
+    padding: 0;
 }
 
 header {
-    background-color: #1e1e1e;
+    background-color: #1f1f1f;  /* Fondo del encabezado */
     color: #ffffff;
-    padding: 20px 0;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 header nav a {
-    color: #ffffff;
-    margin-right: 20px;
+    color: #90caf9;  /* Enlaces en color pastel azul */
+    margin: 0 15px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    transition: color 0.3s;  /* Suave transición de color */
 }
 
 header nav a:hover {
-    text-decoration: underline;
+    color: #64b5f6;  /* Color más claro al pasar el mouse */
 }
 
 h1, h2, h3 {
     color: #ffffff;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 h1 {
-    font-size: 2.5em;
-    margin: 30px 0;
-}
-
-h2 {
-    font-size: 2em;
-    margin: 20px 0;
-    text-align: center;
-}
-
-h3 {
-    font-size: 1.5em;
-    margin: 15px 0;
-}
-
-/* Estilos para el contenedor de contenido */
-main {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: #2a2a2a;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Formularios */
-input[type="text"], textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #444;
-    border-radius: 6px;
-    background-color: #333;
-    color: #ffffff;
-    font-size: 16px;
-}
-
-/* Estilos de botones */
-.btn {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    display: inline-block;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
-
-/* Estilo del pie de página */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    font-size: 14px;
-    background-color: #1e1e1e;
-    color: #b0b0b0;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Estilos para la lista de publicaciones */
-.post-list {
-    list-style: none;
-    padding: 0;
-}
-
-.post-item {
-    background-color: #2a2a2a;
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-.post-title {
-    font-size: 1.6em;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.post-title:hover {
-    text-decoration: underline;
-}
-
-.post-details {
-    color: #b0b0b0;
-}
-
-.post-actions {
-    margin-top: 10px;
-}
-
-
+    f
