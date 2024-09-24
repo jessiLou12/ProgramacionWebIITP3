@@ -1,6 +1,5 @@
 ## from django.shortcuts import render   esto ya estaba
 
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404
@@ -12,28 +11,8 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-
-
-# views.py
-
-
-class HomePageView(ListView):
-    model = Post
-    template_name = 'home.html'
-    context_object_name = 'posts'
-    queryset = Post.objects.order_by('-fechaDepublicacion')[:5]  # Muestra las 5 publicaciones más recientes
-
-
-
-
-
-
-
-
 class ProfileView(LoginRequiredMixin, View):
     template_name = 'profile.html'
-
-
 
 
     def get(self, request):
@@ -42,13 +21,10 @@ class ProfileView(LoginRequiredMixin, View):
         }
         return render(request, self.template_name,context)
 
-
 class PostListView(ListView):
     model = Post
     template_name = 'post/lista.html'
     context_object_name = 'posts'
-
-
 
 
 class PostDetailView(DetailView):
@@ -56,11 +32,9 @@ class PostDetailView(DetailView):
     template_name = 'post/detalles.html'
     context_object_name = 'post'
 
-
     def get_object(self, queryset=None):
         """Override to add get_object_or_404."""
         return get_object_or_404(Post, id=self.kwargs['id'])
-
 
     def get_context_data(self, **kwargs):
         """Agrega los comentarios al contexto."""
@@ -68,7 +42,6 @@ class PostDetailView(DetailView):
         post = self.get_object()
         context['comments'] = post.comment_set.all()  # Cambia esto
         return context
-
 
     def post(self, request, *args, **kwargs):
         """Maneja la creación de un comentario."""
@@ -80,9 +53,6 @@ class PostDetailView(DetailView):
 
 
 
-
-
-
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
@@ -90,13 +60,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('lista')
 
 
-
-
     def form_valid(self, form):
         form.instance.autor = self.request.user  # Asignar el autor como el usuario autenticado
         return super().form_valid(form)
-
-
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
@@ -106,14 +72,10 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('lista')
 
 
-
-
     def get_object(self, queryset=None):
         """Override to add get_object_or_404."""
         obj = get_object_or_404(Post, id=self.kwargs['id'])
         return obj
-
-
 
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
@@ -122,14 +84,10 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('lista')
 
 
-
-
     def get_object(self, queryset=None):
         """Override to add get_object_or_404."""
         obj = get_object_or_404(Post, id=self.kwargs['id'])
         return obj
-
-
 
 
 class RegistroView(View):
@@ -138,13 +96,9 @@ class RegistroView(View):
     success_url = reverse_lazy('lista')
 
 
-
-
     def get(self, request):
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
-
-
 
 
     def post(self, request):
@@ -155,6 +109,7 @@ class RegistroView(View):
             return redirect(self.success_url)
         # En caso de error, vuelve a mostrar el formulario con los errores
         return render(request, self.template_name, {'form': form})
+
 
 
 
