@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{% if form.instance.pk %}
+    Editar Publicación
+{% else %}
+    Crear Publicación
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+<header>
+    <h2>
+    {% if form.instance.pk %}
+        Editar Publicación
+    {% else %}
+        Crear Publicación
+    {% endif %}
+    </h2>
+</header>
+
+
+<section class="form-publicacion">
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Por favor corrige los siguientes errores:</strong>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+        {% if form.instance.pk %}
+            Actualizar Publicación
+        {% else %}
+            Crear Publicación
+        {% endif %}
+        </button>
+    </form>
+    <a href="{% url 'lista' %}" class="btn btn-secondary">Cancelar</a>
+</section>
+
+
+{% endblock %}
+

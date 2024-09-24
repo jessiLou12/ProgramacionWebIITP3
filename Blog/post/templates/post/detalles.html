@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{ post.titulo }}{% endblock %}
+
+
+{% block content %}
+<!-- Artículo de la publicación -->
+<article>
+    <h2>{{ post.titulo }}</h2>
+    <p>{{ post.contenido }}</p>
+    <p><em>Publicado por {{ post.autor }} el {{ post.fechaDepublicacion }}</em></p>
+</article>
+
+
+<!-- Sección de comentarios -->
+<section>
+    <h3>Comentarios</h3>
+    {% if comments %}
+        {% for comment in comments %}
+            <div>
+                <strong>{{ comment.author.username }}</strong>: {{ comment.content }}
+            
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay comentarios aún. Sé el primero en comentar.</p>
+    {% endif %}
+
+
+    <!-- Formulario para agregar un nuevo comentario -->
+    <h4>Agregar un Comentario</h4>
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            <textarea name="content" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
+            <button type="submit">Comentar</button>
+        </form>
+    {% else %}
+        <p>Debes estar <a href="{% url 'login' %}">logueado</a> para comentar.</p>
+    {% endif %}
+</section>
+
+
+{% endblock %}

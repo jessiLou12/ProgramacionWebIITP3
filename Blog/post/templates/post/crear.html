@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Crear Publicación{% endblock %}
+
+
+{% block content %}
+    <h2>Crear Publicación</h2>
+    <form method="post" class="form-publicacion">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Crear Publicación</button>
+    </form>
+    <a href="{% url 'lista' %}" class="btn btn-secondary">Cancelar</a>
+{% endblock %}

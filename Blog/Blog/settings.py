@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j03ew&=j)tyad^5_%b24vt&&gz0rk@td049t$l+y3yuj)03idd'
+SECRET_KEY = 'django-insecure-*x(4ftey4pt+s#xo46k$3ev_tr%s2(8xht#(qryia2ts2(r@hn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'post', ##se agrega la app  
+    
+
 ]
 
 MIDDLEWARE = [
@@ -47,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'post.middlewares.RequestLogMiddleware',  # Asegúrate de ajustar el nombre  MIDD
 ]
 
 ROOT_URLCONF = 'Blog.urls'
@@ -54,7 +58,7 @@ ROOT_URLCONF = 'Blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR,'templates'], #se agrega la carpeta templates 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,9 +119,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+##STATICFILES_DIRS = [
+##  BASE_DIR / "static",  # Si tienes una carpeta 'static' en la raíz del proyecto
+##]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuración de redirección después del inicio de sesión
+LOGIN_REDIRECT_URL = '/post/'  # O la ruta que prefieras
+
+LOGIN_URL='/accounts/login/' 
